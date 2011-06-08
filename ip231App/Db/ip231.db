@@ -1,0 +1,70 @@
+
+record( bi, "$(P):BI:NAME"){
+  field( DESC, "$(NAME)")
+}
+record( bo, "$(P):BO:READ"){
+  field( DESC, "force read:")
+  field( SCAN, "Passive")
+  field( DTYP, "asynInt32")
+  field( OUT,  "@asyn($(PORT),0,1)BO_READ")
+}
+record( bo, "$(P):BO:TRIG"){
+  field( DESC, "Trigger:")
+  field( SCAN, "Passive")
+  field( DTYP, "asynInt32")
+  field( OUT,  "@asyn($(PORT),0,1)BO_TRIG")
+}
+record( bo, "$(P):BO:RESET"){
+  field( DESC, "Soft Reset:")
+  field( SCAN, "Passive")
+  field( DTYP, "asynInt32")
+  field( OUT,  "@asyn($(PORT),0,1)BO_RSET")
+}
+#----------------------------------------------------
+record( mbbo, "$(P):MBBO:SC:MODE"){
+  field( DESC, "Operating Mode:")
+  field( OUT,  "$(P):MBBO:MODE PP")
+  field( ZRST, "Null")
+  field( ONST, "Transparent")
+  field( TWST, "Simultaneous")
+  field( ZRVL, "0")
+  field( ONVL, "1")
+  field( TWVL, "2")
+}
+record( mbbo, "$(P):MBBO:MODE"){
+  field( DESC, "Operating Mode:")
+  field( SDIS, "$(P):MBBO:MODE:Sync.PACT")
+  field( DISV, "1")
+  field( DTYP, "asynInt32")
+  field( OUT,  "@asyn($(PORT),0,1)MBBO_MODE")
+  field( ZRST, "Null")
+  field( ONST, "Transparent")
+  field( TWST, "Simultaneous")
+  field( ZRVL, "0")
+  field( ONVL, "1")
+  field( TWVL, "2")
+}
+record( mbbi, "$(P):MBBI:MODE"){
+  field( DESC, "Mode:")
+  field( SCAN, "I/O Intr")
+  field( DTYP, "asynInt32")
+  field( INP,  "@asyn($(PORT),0,1)MBBI_MODE")
+  field( ZRST, "Null")
+  field( ONST, "Transparent")
+  field( TWST, "Simultaneous")
+  field( ZRVL, "0")
+  field( ONVL, "1")
+  field( TWVL, "2")
+  field( FLNK, "$(P):MBBO:MODE:Sync")
+}
+record( mbbo, "$(P):MBBO:MODE:Sync"){
+  field( DOL,  "$(P):MBBI:MODE NPP")
+  field( OMSL, "closed_loop")
+  field( OUT,  "$(P):MBBO:SC:MODE PP")
+  field( ZRST, "Null")
+  field( ONST, "Transparent")
+  field( TWST, "Simultaneous")
+  field( ZRVL, "0")
+  field( ONVL, "1")
+  field( TWVL, "2")
+}

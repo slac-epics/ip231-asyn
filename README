@@ -1,0 +1,38 @@
+This device driver is for Acromag IP231 8/16 channel DAC module and is
+subclassed from asynPortDriver class written by Mark Rivers.
+The carrier board and the daughter module are setup in st.cmd file in calls to
+
+ipacAddXy9660("baseAddr,0")
+carr1=ipacLatestCarrier()
+
+drvIP231Configure("Port",carr1,slot,"modeString")
+
+where baseAddr is a base address of the carrier board,
+Port is an asyn port name,
+carr1 is a value returned from the call to ipacLatestCarrier() function
+      and is the carrier number (first carrier number is 0)
+slot occupied by the daughter module (0 for A, 1 for B, etc)
+ModeString is one of the {transparent,simultaneous}
+
+When the device driver is configured, a software reset is issued to the module.
+This sets output latches for all channels to 0V.  Then 0x8000 is written to all
+input latches and 0V is also written to the ao records of all the channels,
+and the operation mode is set to the value specified in the drvIP231Configure
+command.
+
+An EDM screen is provided which:
+1. allows setting DAC output value for each channel,
+2. shows the readback of the input latch for each channel,
+3. allows to control the operating modes.
+
+Note, that the input latch and the output latch, which is the actual value put
+out by the DAC may not be the same if the operating mode simultaneous is
+selected.  This module does not provide hardware for reading back the output
+latches.
+
+Also note that when the IOC using this module is first started, the output DAC
+and the readback analog records both show the contents of the input latch
+for each channel.  This assumes that the IOC is using the db files provided
+with the driver support module.
+
+Created on 3/12/2011 by zms
