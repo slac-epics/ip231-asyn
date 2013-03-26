@@ -1,4 +1,7 @@
+ip231-asyn-R1-0-2:  Building against ipac-R2-11_1-0 and asyn-R4-20_1-1
+
 ip231-asyn-R1-0-1:  Build against new version of Asyn: asyn-R4-18-lcls2
+
 
 ip231-asyn-R1-0-0:  Initial Release ready for test
 
