@@ -25,7 +25,7 @@ CHECK_RELEASE = YES
 #CROSS_COMPILER_TARGET_ARCHS = RTEMS-pc586
 #CROSS_COMPILER_TARGET_ARCHS = vxWorks-ppc604_long vxWorks-mpc8540
 #CROSS_COMPILER_TARGET_ARCHS = vxWorks-ppc604_long vxWorks-mpc8540 RTEMS-beatnik
-CROSS_COMPILER_TARGET_ARCHS = vxWorks-ppc604_long RTEMS-beatnik
+CROSS_COMPILER_TARGET_ARCHS = RTEMS-beatnik RTEMS-mvme3100
 #CROSS_COMPILER_TARGET_ARCHS = vxWorks-ppc604_long
 
 # To install files into a location other than $(TOP) define
