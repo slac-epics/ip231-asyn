@@ -8,6 +8,8 @@ record( ao, "$(P):SC_$(CH)"){
   field( LOPR, "$(EGUL)")
   field( EGU,  "$(EGU)")
   field( VAL,  "0")
+  info(autosaveFields,"VAL DESC")
+  info(archive)
 }
 record( ao, "$(P):$(CH)"){
   field( SDIS, "$(P):$(CH)_Sync.PACT")
@@ -22,6 +24,7 @@ record( ao, "$(P):$(CH)"){
   field( EGU,  "$(EGU)")
   field( LINR, "LINEAR")
   field( VAL,  "0")
+  info(autosaveFields,"VAL DESC")
 }
 record( ai,"$(P):AI_$(CH)"){
   field( DESC, "Channel$(CH)")
