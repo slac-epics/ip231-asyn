@@ -1,0 +1,42 @@
+record( ao, "$(P):SC_$(CH)"){
+  field( DESC, "Channel$(CH)")
+  field( OUT,  "$(P):$(CH) PP")
+  field( PREC, "3")
+  field( DRVH, "$(EGUF)")
+  field( DRVL, "$(EGUL)")
+  field( HOPR, "$(EGUF)")
+  field( LOPR, "$(EGUL)")
+  field( EGU,  "$(EGU)")
+  field( VAL,  "0")
+}
+record( ao, "$(P):$(CH)"){
+  field( SDIS, "$(P):$(CH)_Sync.PACT")
+  field( DISV, "1")
+  field( DTYP, "asynInt32")
+  field( OUT,  "@asyn($(PORT),$(CH),1)AO_DATA")
+  field( PREC, "3")
+  field( EGUF, "$(EGUF)")
+  field( EGUL, "$(EGUL)")
+  field( HOPR, "$(EGUF)")
+  field( LOPR, "$(EGUL)")
+  field( EGU,  "$(EGU)")
+  field( LINR, "LINEAR")
+  field( VAL,  "0")
+}
+record( ai,"$(P):AI_$(CH)"){
+  field( DESC, "Channel$(CH)")
+  field( SCAN, "I/O Intr")
+  field( DTYP, "asynInt32")
+  field( INP,  "@asyn($(PORT),$(CH),1)AI_DATA")
+  field( EGU,  "V")
+  field( EGUF, "$(EGUF)")
+  field( EGUL, "$(EGUL)")
+  field( LINR, "LINEAR")
+  field( PREC, "3")
+  field( FLNK, "$(P):$(CH)_Sync")
+}
+record( ao, "$(P):$(CH)_Sync"){
+  field( DOL,  "$(P):AI_$(CH) NPP")
+  field( OMSL, "closed_loop")
+  field( OUT,  "$(P):SC_$(CH) PP")
+}

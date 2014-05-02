@@ -2,8 +2,7 @@ TOP=../..
 
 include $(TOP)/configure/CONFIG
 
-LIBRARY_IOC_vxWorks += ip231
-LIBRARY_IOC_RTEMS   += ip231
+LIBRARY_IOC += ip231
 
 DBD += ip231.dbd
 
