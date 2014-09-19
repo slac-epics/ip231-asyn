@@ -26,8 +26,10 @@ asynStatus drvIP231::_configure( int carr,int slot,char* mode){
 //  slot is the daughter car position or slot {0..3},
 //  mode is either "transparent" or "simultaneous".
 //------------------------------------------------------------------------------
-  ipac_idProm_t* id; char* base; int i,manuf,model;
-  byte offh,offl,gainh,gainl;  word offst,gain; short offval,gaival;
+  ipac_idProm_t* id; word* base; int i,manuf,model;
+  byte offh,offl,gainh,gainl;  
+  short offst,gain; 
+  short offval,gaival;
   
   _pmem=0;
   if(ipmCheck( carr,slot)){
@@ -35,7 +37,7 @@ asynStatus drvIP231::_configure( int carr,int slot,char* mode){
     return(asynError);
   }
   id=(ipac_idProm_t*)ipmBaseAddr( carr,slot,ipac_addrID);
-  base=(char*)ipmBaseAddr( carr,slot,ipac_addrIO);
+  base= (word *) ipmBaseAddr( carr,slot,ipac_addrIO);
   manuf=id->manufacturerId&0xff;
   _model=model=id->modelId&0xff;
   if(manuf!=ACROID){
@@ -54,15 +56,24 @@ asynStatus drvIP231::_configure( int carr,int slot,char* mode){
   _slot=slot;
   _pmem=(ip231_t*)base;
   for( i=0; i<_nchan; i++){
+    /* swap the high/low bytes with regard to endianess */
+#if	__BYTE_ORDER==__BIG_ENDIAN
     offh=_pmem->calData[i*4+0];
     offl=_pmem->calData[i*4+1];
     gainh=_pmem->calData[i*4+2];
     gainl=_pmem->calData[i*4+3];
+#else
+    offl=_pmem->calData[i*4+0];
+    offh=_pmem->calData[i*4+1];
+    gainl=_pmem->calData[i*4+2];
+    gainh=_pmem->calData[i*4+3];
+#endif
     offst=(offh<<8)+offl;
     gain=(gainh<<8)+gainl;
-    offval=(short)offst;
-    gaival=(short)gain;
+    offval=offst;
+    gaival=gain;
     _slope[i]=1.0+(double)gaival/262144.0;
+    _offst[i]=(double)offval/4.0-(double)gaival/8.0;
     _offst[i]=(double)offval/4.0-(double)gaival/8.0;
   }
   _reset();
