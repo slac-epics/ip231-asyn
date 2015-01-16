@@ -9,7 +9,7 @@ record( ao, "$(P):SC_$(CH)"){
   field( EGU,  "$(EGU)")
   field( VAL,  "0")
   info(autosaveFields,"VAL DESC")
-  info(archive)
+#  i#n#f#o#(#archive#)
 }
 record( ao, "$(P):$(CH)"){
   field( SDIS, "$(P):$(CH)_Sync.PACT")
