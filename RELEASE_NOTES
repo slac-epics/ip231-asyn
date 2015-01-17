@@ -1,6 +1,6 @@
-ip231-asyn-R1-0-6: Revert to asyn-R4-21_1-0 to resolve dependencies in specific IOCs.
- 
-ip231-asyn-R1-0-5: Build against ipac-R2-11_1-2 and asyn-R4-23_1-2
+ip231-asyn-R1-0-6: Revert to asyn-R4-21_1-0 to resolve dependencies in specific IOCs. 
+
+ip231-asyn-R1-0-5: Build against ipac-R2-11_1-2 and asyn-R4-25_1-0
                    This was all triggered by a new linuxRT tool-chain which exposed a
                    problem in Hytec's IP carrier for mTCA source code
 
