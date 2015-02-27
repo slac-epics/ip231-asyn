@@ -22,6 +22,7 @@ record( ao, "$(P):AO:CH$(CH)"){
   field( EGU,  "$(EGU)")
   field( LINR, "LINEAR")
   field( VAL,  "0")
+  field(PINI, "$(PINI=NO)"
 }
 record( ai,"$(P):AI:CH$(CH)"){
   field( DESC, "Channel$(CH)")
@@ -34,6 +35,7 @@ record( ai,"$(P):AI:CH$(CH)"){
   field( LINR, "LINEAR")
   field( PREC, "3")
   field( FLNK, "$(P):AO:CH$(CH):Sync")
+  field(PINI, "$(PINI=NO)"
 }
 record( ao, "$(P):AO:CH$(CH):Sync"){
   field( DOL,  "$(P):AI:CH$(CH) NPP")
