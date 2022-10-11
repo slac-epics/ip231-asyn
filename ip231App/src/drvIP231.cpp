@@ -113,7 +113,7 @@ void drvIP231::_reset(){
   setIntegerParam( _mbbiMode,_mode);
   callParamCallbacks();
 }
-void drvIP231::_setMode( _mode_t m){
+void drvIP231::_setMode( _dacmode_t m){
 //------------------------------------------------------------------------------
   if(!_pmem) return;
   _mode=m;
@@ -177,7 +177,7 @@ asynStatus drvIP231::writeInt32( asynUser* pau,epicsInt32 v){
     case ixBoRead:	_readChanls(); break;
     case ixBoTrig:	_trigger(); break;
     case ixBoRset:	_reset(); break;
-    case ixMbboMode:	_setMode( (_mode_t)v); break;
+    case ixMbboMode:	_setMode( (_dacmode_t)v); break;
     case ixAoData:	_writeChan(addr,v); break;
     default:		break;
   }

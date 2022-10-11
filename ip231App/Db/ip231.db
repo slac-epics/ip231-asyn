@@ -30,7 +30,7 @@ record( mbbo, "$(P):MBBO:SC:MODE"){
   field( ZRVL, "0")
   field( ONVL, "1")
   field( TWVL, "2")
-  field(PINI, "$(PINI=NO)"
+  field(PINI, "$(PINI=NO)")
 }
 record( mbbo, "$(P):MBBO:MODE"){
   field( DESC, "Operating Mode:")
@@ -44,7 +44,7 @@ record( mbbo, "$(P):MBBO:MODE"){
   field( ZRVL, "0")
   field( ONVL, "1")
   field( TWVL, "2")
-  field(PINI, "$(PINI=NO)"
+  field(PINI, "$(PINI=NO)")
 }
 record( mbbi, "$(P):MBBI:MODE"){
   field( DESC, "Mode:")

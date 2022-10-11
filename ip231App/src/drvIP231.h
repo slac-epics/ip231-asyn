@@ -50,7 +50,7 @@ typedef struct{
 #define mbboModeStr	"MBBO_MODE"	// asynInt32,		w/o
 #define aiDataStr	"AI_DATA"	// asynInt32,		r/o
 
-typedef enum{dacModeNull,dacModeTransp,dacModeSimult} _mode_t;
+typedef enum{dacModeNull,dacModeTransp,dacModeSimult} _dacmode_t;
 
 class drvIP231 : public asynPortDriver {
 public:
@@ -74,14 +74,14 @@ private:
   void		_readChanls();
   void		_trigger();
   void		_reset();
-  void		_setMode( _mode_t m);
+  void		_setMode( _dacmode_t m);
   const char*	_port;
   const char*	_name;
   word		_carrier;
   word		_slot;
   word		_model;
   word		_nchan;
-  _mode_t	_mode;
+  _dacmode_t	_mode;
   ip231_t*	_pmem;
   float		_offst[MAX_ADDR],
 		_slope[MAX_ADDR];
