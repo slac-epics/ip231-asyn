@@ -21,7 +21,7 @@
 # ==========================================================
 IPAC_MODULE_VERSION=R2.15-1.0.0
 
-ASYN_MODULE_VERSION=R4.39-1.0.1
+ASYN_MODULE_VERSION=R4.39-1.0.2
 
 # ==========================================================
 # External Support module path definitions

@@ -1,3 +1,6 @@
+R1.1.1: Nov/08/2024 - Jeremy Lorelli (lorelli)
+        - Update asyn to R4.39-1.0.2
+
 R1.1.0: Oct/10/2022 - Marcio Donadio (marcio)
         - Changes to adapt to Git Workflow and EPICS 7.
         - Manually imported changes from Kristi/Shawn that allows the module to
